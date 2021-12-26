@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+	<id>streaming_schedule</id>
+	<name>Streaming Schedule</name>
+	<summary>Streaming schedule</summary>
+	<description>**Streaming schedule**
+
+* schedule streaming on YouTube
+	</description>
+	<version>24.0.0</version>
+	<licence>agpl</licence>
+	<author mail="contact@librecode.coop" homepage="https://librecode.coop">Libre Code</author>
+	<namespace>StreamingSchedule</namespace>
+	<types>
+		<filesystem/>
+	</types>
+	<documentation>
+		<admin>https://github.com/LibrecodeCoop/streaming_schedule/blob/master/README.md</admin>
+	</documentation>
+	<category>files</category>
+	<category>workflow</category>
+	<category>organization</category>
+	<category>tools</category>
+	<website>https://github.com/LibrecodeCoop/streaming_schedule</website>
+	<discussion>https://github.com/LibrecodeCoop/streaming_schedule/issues</discussion>
+	<bugs>https://github.com/LibrecodeCoop/streaming_schedule/issues</bugs>
+	<repository type="git">https://github.com/LibrecodeCoop/streaming_schedule</repository>
+	<screenshot>https://raw.githubusercontent.com/LibrecodeCoop/streaming_schedule/main/img/LibreSign.png</screenshot>
+	<dependencies>
+		<php min-version="7.4" />
+		<nextcloud min-version="24" max-version="24"/>
+	</dependencies>
+	<commands>
+		<command>OCA\StreamingSchedule\Command\ScheduleYouTube</command>
+		<command>OCA\StreamingSchedule\Command\ConfigureYouTube</command>
+	</commands>
+</info>
