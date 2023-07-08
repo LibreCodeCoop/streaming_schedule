@@ -38,24 +38,16 @@ class ConfigController extends Controller {
 
 	/** @var string */
 	private $userId;
-	/** @var IConfig */
-	private $config;
-	/** @var IURLGenerator */
-	private $urlGenerator;
-	/** @var IL10N */
-	private $l;
-	/** @var GoogleAPIService */
-	private $googleApiService;
 
 	const YOUTUBE_SCOPE = 'https://www.googleapis.com/auth/youtube';
 
 	public function __construct(string $appName,
 								string $userId,
-								IRequest $request,
-								IConfig $config,
-								IURLGenerator $urlGenerator,
-								IL10N $l,
-								GoogleAPIService $googleApiService) {
+								private IRequest $request,
+								private IConfig $config,
+								private IURLGenerator $urlGenerator,
+								private IL10N $l,
+								private GoogleAPIService $googleApiService) {
 		parent::__construct($appName, $request);
 		$this->userId = $userId;
 		$this->config = $config;
