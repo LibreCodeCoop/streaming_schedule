@@ -29,7 +29,6 @@ use OCA\StreamingSchedule\Service\GoogleAPIService;
 use OCP\IURLGenerator;
 use OCP\IConfig;
 use OCP\IL10N;
-use OCP\Contacts\IManager as IContactManager;
 
 use OCP\IRequest;
 use OCP\AppFramework\Http\RedirectResponse;
