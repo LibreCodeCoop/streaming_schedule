@@ -31,8 +31,8 @@ use OCP\IURLGenerator;
 use OCP\IUserSession;
 
 class GoogleAPIService {
-	/** @var Client */
-	private $client;
+	private Client $client;
+	private string $userId;
 
 	/**
 	 * Service to make requests to Google v3 (JSON) API
