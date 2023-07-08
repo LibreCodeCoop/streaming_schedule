@@ -40,14 +40,9 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class ScheduleYouTube extends Base {
-	/** @var IConfig */
-	private $config;
-	/** @var GoogleAPIService */
-	private $googleApiService;
-
 	public function __construct(
-		IConfig $config,
-		GoogleAPIService $googleApiService
+		private IConfig $config,
+		private GoogleAPIService $googleApiService
 	) {
 		parent::__construct();
 		$this->config = $config;
