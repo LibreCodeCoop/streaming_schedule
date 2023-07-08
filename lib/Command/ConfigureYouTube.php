@@ -35,14 +35,9 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class ConfigureYouTube extends Base {
-	/** @var IConfig */
-	private $config;
-	/** @var GoogleAPIService */
-	private $googleAPIService;
-
 	public function __construct(
-		IConfig $config,
-		GoogleAPIService $googleAPIService
+		private IConfig $config,
+		private GoogleAPIService $googleAPIService
 	) {
 		parent::__construct();
 		$this->config = $config;

@@ -29,34 +29,26 @@ use OCA\StreamingSchedule\Service\GoogleAPIService;
 use OCP\IURLGenerator;
 use OCP\IConfig;
 use OCP\IL10N;
-use OCP\Contacts\IManager as IContactManager;
 
 use OCP\IRequest;
 use OCP\AppFramework\Http\RedirectResponse;
 use OCP\AppFramework\Controller;
+use OCP\AppFramework\Http\Attribute\NoAdminRequired;
+use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
 
 class ConfigController extends Controller {
-
 	/** @var string */
 	private $userId;
-	/** @var IConfig */
-	private $config;
-	/** @var IURLGenerator */
-	private $urlGenerator;
-	/** @var IL10N */
-	private $l;
-	/** @var GoogleAPIService */
-	private $googleApiService;
 
 	const YOUTUBE_SCOPE = 'https://www.googleapis.com/auth/youtube';
 
 	public function __construct(string $appName,
 								string $userId,
-								IRequest $request,
-								IConfig $config,
-								IURLGenerator $urlGenerator,
-								IL10N $l,
-								GoogleAPIService $googleApiService) {
+								private IRequest $request,
+								private IConfig $config,
+								private IURLGenerator $urlGenerator,
+								private IL10N $l,
+								private GoogleAPIService $googleApiService) {
 		parent::__construct($appName, $request);
 		$this->userId = $userId;
 		$this->config = $config;
@@ -66,17 +58,16 @@ class ConfigController extends Controller {
 	}
 
 	/**
-	 * @NoAdminRequired
-	 * @NoCSRFRequired
-	 *
 	 * Receive oauth code and get oauth access token
 	 *
 	 * @param string $code request code to use when requesting oauth token
 	 * @param string $state value that was sent with original GET request. Used to check auth redirection is valid
 	 * @param string $scope scopes allowed by user
 	 * @param ?string $error
-	 * @return RedirectResponse to user settings
+	 * @return RedirectRgetAuthUrlesponse to user settings
 	 */
+	#[NoAdminRequired]
+	#[NoCSRFRequired]
 	public function oauthRedirect(string $code = '', string $state = '',  string $scope = '', string $error = ''): RedirectResponse {
 		$configState = $this->config->getUserValue($this->userId, Application::APP_ID, 'youtube_oauth_state');
 		$clientID = $this->config->getAppValue(Application::APP_ID, 'youtube_client_id');

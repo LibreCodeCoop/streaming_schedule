@@ -31,24 +31,19 @@ use OCP\IURLGenerator;
 use OCP\IUserSession;
 
 class GoogleAPIService {
-	/** @var IUserSession $userSession */
-	private $userSession;
-	/** @var IConfig */
-	private $config;
-	/** @var Client */
-	private $client;
+	private Client $client;
+	private string $userId;
 
 	/**
 	 * Service to make requests to Google v3 (JSON) API
 	 */
 	public function __construct (
-		IUserSession $userSession,
-		IConfig $config,
-		IURLGenerator $urlGenerator
+		private IUserSession $userSession,
+		private IConfig $config,
+		private IURLGenerator $urlGenerator
 	) {
 		$this->userSession = $userSession;
 		$this->config = $config;
-		$this->urlGenerator = $urlGenerator;
 		$this->client = new Client();
 		$this->client->setClientId($this->config->getAppValue(Application::APP_ID, 'youtube_client_id'));
 		$this->client->setClientSecret($this->config->getAppValue(Application::APP_ID, 'youtube_client_secret'));
