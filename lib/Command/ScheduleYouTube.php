@@ -24,7 +24,6 @@ declare(strict_types=1);
 
 namespace OCA\StreamingSchedule\Command;
 
-use DateTime;
 use Google\Http\MediaFileUpload;
 use Google\Service\YouTube;
 use Google\Service\YouTube\LiveBroadcast;
